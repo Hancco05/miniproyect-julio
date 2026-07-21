@@ -503,39 +503,7 @@
             border-color: var(--accent);
         }
 
-        /* ===== FOOTER ===== */
-        footer {
-            margin-top: 3rem;
-            padding: 2rem 0;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        footer strong {
-            color: var(--accent);
-        }
-
-        footer .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        footer .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        footer .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        /* ===== MODAL ===== */
+        /* ===== MODAL DE INFORMACIÓN (general) ===== */
         .modal {
             display: none;
             position: fixed;
@@ -615,6 +583,139 @@
             color: #fff;
         }
 
+        /* ===== MODAL DE CONFIRMACIÓN DE DESCARGA (VERDE) ===== */
+        .download-confirm-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            padding: 1rem;
+        }
+
+        .download-confirm-overlay.open {
+            display: flex;
+        }
+
+        .download-confirm-box {
+            background: #0d2e0d; /* verde oscuro */
+            border: 3px solid #00cc44;
+            border-radius: var(--radius);
+            max-width: 450px;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 204, 68, 0.3);
+            animation: pulseGreen 1.5s infinite alternate;
+        }
+
+        @keyframes pulseGreen {
+            0% {
+                box-shadow: 0 0 20px rgba(0, 204, 68, 0.2);
+            }
+            100% {
+                box-shadow: 0 0 50px rgba(0, 204, 68, 0.6);
+            }
+        }
+
+        .download-confirm-box h3 {
+            font-family: var(--font-title);
+            color: #00dd55;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
+        }
+
+        .download-confirm-box p {
+            color: #b0e0b0;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        .download-confirm-box .game-name {
+            color: #ffffff;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .download-confirm-box .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .download-confirm-box .btn-group button {
+            padding: 0.7rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .download-confirm-box .btn-confirm {
+            background: #00cc44;
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 204, 68, 0.4);
+        }
+
+        .download-confirm-box .btn-confirm:hover {
+            background: #00ee55;
+            transform: scale(1.05);
+        }
+
+        .download-confirm-box .btn-cancel {
+            background: #444;
+            color: #fff;
+        }
+
+        .download-confirm-box .btn-cancel:hover {
+            background: #666;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: var(--accent);
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer .footer-links a:hover {
+            color: var(--accent);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
             .info-section {
@@ -643,6 +744,9 @@
                 padding: 0.4rem 0.2rem;
             }
             .modal-content {
+                padding: 1.5rem;
+            }
+            .download-confirm-box {
                 padding: 1.5rem;
             }
         }
@@ -676,8 +780,8 @@
                 <strong>tributo y respaldo documental</strong> a los juegos que sentaron las bases del terror en
                 los videojuegos. Aquí encontrarás información detallada sobre las sagas <strong>Silent Hill</strong>,
                 <strong>Resident Evil</strong>, <strong>S.T.A.L.K.E.R.</strong>, <strong>American McGee's Alice</strong>,
-                <strong>F.E.A.R.</strong> y la mítica demo <strong>P.T.</strong>, además de otros títulos fundamentales.
-                Todo con el fin de preservar estas obras de arte interactivas.
+                <strong>F.E.A.R.</strong>, la mítica demo <strong>P.T.</strong> y también <strong>Dino Crisis</strong>,
+                entre otros títulos fundamentales. Todo con el fin de preservar estas obras de arte interactivas.
             </p>
         </section>
 
@@ -796,6 +900,10 @@
                 “F.E.A.R. combinó acción trepidante con una historia de terror sobrenatural de forma brillante.”
                 <span class="author">— GameTrailers, 2005</span>
             </div>
+            <div class="quote-slide">
+                “Dino Crisis trajo la tensión de los dinosaurios a la fórmula del survival horror de Capcom.”
+                <span class="author">— Official PlayStation Magazine, 1999</span>
+            </div>
             <div class="quote-controls">
                 <button id="prevQuote">❮</button>
                 <button id="nextQuote">❯</button>
@@ -804,13 +912,29 @@
 
     </main>
 
-    <!-- ===== MODAL ===== -->
+    <!-- ===== MODAL DE INFORMACIÓN GENERAL ===== -->
     <div class="modal" id="gameModal">
         <div class="modal-content">
             <button class="close-modal" id="closeModal">&times;</button>
             <h2 id="modalTitle">Título</h2>
             <div id="modalBody">
                 <p>Contenido adicional...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL DE CONFIRMACIÓN DE DESCARGA (VERDE) ===== -->
+    <div class="download-confirm-overlay" id="downloadConfirmOverlay">
+        <div class="download-confirm-box">
+            <h3>⬇ ¿Descargar?</h3>
+            <p>
+                Estás a punto de descargar <br />
+                <span class="game-name" id="confirmGameName">Juego</span>
+            </p>
+            <p style="font-size:0.9rem; color:#88cc88;">Esta descarga es para preservación cultural.</p>
+            <div class="btn-group">
+                <button class="btn-confirm" id="confirmDownloadBtn">Sí, descargar</button>
+                <button class="btn-cancel" id="cancelDownloadBtn">Cancelar</button>
             </div>
         </div>
     </div>
@@ -835,7 +959,7 @@
 
     <script>
         // ============================================================
-        //  DATOS DE LOS JUEGOS (ampliados con Outbreak, P.T. y F.E.A.R.)
+        //  DATOS DE LOS JUEGOS (con Dino Crisis 1)
         // ============================================================
         const GAMES_DATA = [{
             id: 'sh1',
@@ -991,6 +1115,20 @@
             image: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/94/FEAR_Boxart.jpg/220px-FEAR_Boxart.jpg',
             downloadUrl: 'https://www.mediafire.com/file/ejemplo/fear_pc.rar/file',
             favorite: false
+        }, {
+            id: 'dinocrisis',
+            title: 'Dino Crisis',
+            year: 1999,
+            developer: 'Capcom',
+            platform: 'PS1 / PC',
+            genre: 'Survival Horror / Ciencia Ficción',
+            protagonist: 'Regina',
+            enemy: 'Velociraptores, T-Rex, etc.',
+            description: 'Un equipo de élite es enviado a una isla remota para investigar una instalación secreta, pero se encuentran con dinosaurios que han escapado de los experimentos. Con mecánicas similares a Resident Evil, pero con dinosaurios en lugar de zombis.',
+            extra: 'Creado por el mismo equipo de Resident Evil, Shinji Mikami. Fue un éxito y tuvo una secuela, pero la serie quedó abandonada. Destaca por su tensión constante y la gestión de munición.',
+            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Dino_Crisis_Cover.jpg/220px-Dino_Crisis_Cover.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/ejemplo/dinocrisis.rar/file',
+            favorite: false
         }];
 
         // ============================================================
@@ -1085,15 +1223,19 @@
             `).join('');
 
             // ===== EVENTOS DE LOS BOTONES =====
+            // Descarga: usamos el modal verde de confirmación
             grid.querySelectorAll('.btn-download').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     const url = this.dataset.url;
                     const id = this.dataset.id;
-                    if (confirm(`¿Descargar "${currentGames.find(g => g.id === id).title}"?`)) {
-                        window.open(url, '_blank');
-                        this.textContent = '✓ Descargando...';
-                        setTimeout(() => this.textContent = '⬇ Descargar', 2000);
+                    const game = currentGames.find(g => g.id === id);
+                    if (game) {
+                        // Mostrar modal verde de confirmación
+                        document.getElementById('confirmGameName').textContent = game.title;
+                        document.getElementById('downloadConfirmOverlay').classList.add('open');
+                        // Guardar la URL y el ID para usarlos al confirmar
+                        window._pendingDownload = { url, id };
                     }
                 });
             });
@@ -1124,7 +1266,7 @@
         }
 
         // ============================================================
-        //  MODAL
+        //  MODAL DE INFORMACIÓN GENERAL
         // ============================================================
         const modal = document.getElementById('gameModal');
         const modalTitle = document.getElementById('modalTitle');
@@ -1164,6 +1306,41 @@
         });
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
+        });
+
+        // ============================================================
+        //  MODAL DE CONFIRMACIÓN DE DESCARGA (VERDE)
+        // ============================================================
+        const downloadOverlay = document.getElementById('downloadConfirmOverlay');
+        const confirmBtn = document.getElementById('confirmDownloadBtn');
+        const cancelBtn = document.getElementById('cancelDownloadBtn');
+
+        function closeDownloadConfirm() {
+            downloadOverlay.classList.remove('open');
+            window._pendingDownload = null;
+        }
+
+        confirmBtn.addEventListener('click', function() {
+            if (window._pendingDownload) {
+                window.open(window._pendingDownload.url, '_blank');
+                // feedback visual en el botón de descarga (opcional)
+                const btn = document.querySelector(`.btn-download[data-id="${window._pendingDownload.id}"]`);
+                if (btn) {
+                    btn.textContent = '✓ Descargando...';
+                    setTimeout(() => btn.textContent = '⬇ Descargar', 2000);
+                }
+                closeDownloadConfirm();
+            }
+        });
+
+        cancelBtn.addEventListener('click', closeDownloadConfirm);
+        downloadOverlay.addEventListener('click', function(e) {
+            if (e.target === this) closeDownloadConfirm();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && downloadOverlay.classList.contains('open')) {
+                closeDownloadConfirm();
+            }
         });
 
         // ============================================================
