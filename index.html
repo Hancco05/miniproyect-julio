@@ -1,11 +1,1206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clásicos del Survival Horror · Archivo Histórico</title>
+    <link rel="icon" href="https://www.evilresource.com/images/data/full/re4remake/first-aid-spray.png" type="image/x-icon" />
+    <!-- Fuente y estilos base -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== VARIABLES Y RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0b0b0b;
+            --bg-card: #161616;
+            --bg-glass: rgba(20, 20, 20, 0.85);
+            --text-primary: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --accent: #e60000;
+            --accent-glow: #ff1a1a;
+            --border-color: #2a2a2a;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+            --radius: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', Roboto, system-ui, sans-serif;
+            --font-title: 'Orbitron', monospace;
+            --font-retro: 'VT323', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 1rem;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 20% 30%, #1a0a0a 0%, #000 100%);
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* ===== UTILIDADES ===== */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(230, 0, 0, 0.4);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: #fff;
+            text-shadow: none;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            padding: 2rem 0 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: scanline 4s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        header h1 {
+            font-family: var(--font-title);
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #fff 30%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(230, 0, 0, 0.3));
+        }
+
+        header p {
+            font-family: var(--font-retro);
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            letter-spacing: 3px;
+        }
+
+        /* ===== INTRO ===== */
+        .intro {
+            background: var(--bg-glass);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius);
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(4px);
+            box-shadow: var(--shadow);
+        }
+
+        .intro p {
+            font-size: 1.05rem;
+            color: #ddd;
+        }
+
+        .intro strong {
+            color: var(--accent);
+        }
+
+        /* ===== CONTROLES DE FILTRO ===== */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding: 1rem;
+            background: var(--bg-glass);
+            border-radius: var(--radius);
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--border-color);
+        }
+
+        .controls input,
+        .controls select {
+            background: #1e1e1e;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            min-width: 200px;
+            transition: var(--transition);
+        }
+
+        .controls input:focus,
+        .controls select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 8px rgba(230, 0, 0, 0.3);
+        }
+
+        .controls input::placeholder {
+            color: #666;
+        }
+
+        .controls label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== GRID DE JUEGOS ===== */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .game-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform var(--transition), box-shadow var(--transition);
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 12px 40px rgba(230, 0, 0, 0.15);
+            border-color: var(--accent);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent);
+            background: #111;
+            transition: filter var(--transition);
+        }
+
+        .game-card:hover img {
+            filter: brightness(1.1) saturate(1.2);
+        }
+
+        .game-body {
+            padding: 1.2rem 1.5rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+            letter-spacing: 1px;
+        }
+
+        .game-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.8rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .game-meta .badge {
+            background: var(--accent);
+            color: #fff;
+            padding: 0.1rem 0.6rem;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .game-meta .badge-dev {
+            background: #333;
+            color: #ccc;
+        }
+
+        .game-desc {
+            font-size: 0.95rem;
+            color: #cfcfcf;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .game-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: auto;
+            align-items: center;
+        }
+
+        .game-actions button {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 0.4rem 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .game-actions button:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .game-actions .btn-download {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            font-weight: bold;
+            padding: 0.5rem 1.2rem;
+        }
+
+        .game-actions .btn-download:hover {
+            background: #cc0000;
+            border-color: #cc0000;
+        }
+
+        .game-actions .btn-download:active {
+            transform: scale(0.95);
+        }
+
+        .game-actions .btn-fav {
+            background: transparent;
+        }
+
+        .game-actions .btn-fav.fav {
+            color: #ffcc00;
+            border-color: #ffcc00;
+        }
+
+        .game-actions .btn-info {
+            background: transparent;
+        }
+
+        /* ===== SECCIÓN INFORMATIVA ===== */
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-block {
+            background: var(--bg-glass);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(4px);
+        }
+
+        .info-block h3 {
+            font-family: var(--font-title);
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        .info-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-block ul li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .info-block ul li:last-child {
+            border-bottom: none;
+        }
+
+        .info-block ul li::before {
+            content: '▸';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .info-block .icon-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .info-block .icon-list span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #1a1a1a;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            border: 1px solid #333;
+            font-size: 0.9rem;
+        }
+
+        /* ===== TABLA COMPARATIVA ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th {
+            background: var(--accent);
+            color: #fff;
+            padding: 0.6rem;
+            text-align: left;
+            font-family: var(--font-title);
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table td {
+            padding: 0.6rem;
+            border-bottom: 1px solid #2a2a2a;
+            color: #ddd;
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(230, 0, 0, 0.05);
+        }
+
+        /* ===== CARRUSEL DE CITAS ===== */
+        .quote-carousel {
+            background: var(--bg-glass);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 120px;
+        }
+
+        .quote-slide {
+            display: none;
+            animation: fadeQuote 0.6s ease;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        .quote-slide.active {
+            display: block;
+        }
+
+        .quote-slide .author {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--accent);
+            font-style: normal;
+            font-weight: bold;
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeQuote {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quote-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quote-controls button {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 0.3rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quote-controls button:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: var(--accent);
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 1rem;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-glass);
+            max-width: 600px;
+            width: 100%;
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid var(--accent);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-content .close-modal {
+            position: absolute;
+            top: 0.8rem;
+            right: 1.2rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-content .close-modal:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            font-family: var(--font-title);
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: #ccc;
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-content .extra-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1rem;
+            background: #0d0d0d;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            border: 1px solid #222;
+        }
+
+        .modal-content .extra-info span {
+            color: #aaa;
+        }
+
+        .modal-content .extra-info strong {
+            color: #fff;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .info-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .controls input,
+            .controls select {
+                min-width: unset;
+                width: 100%;
+            }
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            .comparison-table {
+                font-size: 0.75rem;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.4rem 0.2rem;
+            }
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <h1>Archivo Survival Horror</h1>
+            <p>Preservando los clásicos que definieron el género</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ===== INTRO ===== -->
+        <section class="intro">
+            <p>
+                <strong>Bienvenido al Archivo Histórico del Survival Horror.</strong> Este sitio es un
+                <strong>tributo y respaldo documental</strong> a los juegos que sentaron las bases del terror en
+                los videojuegos. Aquí encontrarás información detallada sobre las sagas <strong>Silent Hill</strong>,
+                <strong>Resident Evil</strong>, <strong>S.T.A.L.K.E.R.</strong> y <strong>American McGee's Alice</strong>,
+                sus creadores, su impacto cultural y enlaces para acceder a versiones abandonadas legalmente,
+                con el único fin de preservar estas obras de arte interactivas.
+            </p>
+        </section>
+
+        <!-- ===== CONTROLES ===== -->
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar juego, desarrolladora..." />
+            <select id="sortSelect">
+                <option value="default">Ordenar por defecto</option>
+                <option value="title">Por nombre (A-Z)</option>
+                <option value="year">Por año (ascendente)</option>
+                <option value="year-desc">Por año (descendente)</option>
+            </select>
+            <label>
+                <span>⭐ Favoritos</span>
+                <input type="checkbox" id="favFilter" />
+            </label>
+        </div>
+
+        <!-- ===== GRID DE JUEGOS ===== -->
+        <div class="games-grid" id="gamesGrid">
+            <!-- Los juegos se inyectan con JavaScript -->
+        </div>
+
+        <!-- ===== SECCIÓN INFORMATIVA ===== -->
+        <div class="info-section">
+            <div class="info-block">
+                <h3>🧟 Características del Survival Horror</h3>
+                <ul>
+                    <li><strong>Recursos limitados:</strong> Munición, curaciones y objetos escasos que aumentan la tensión.</li>
+                    <li><strong>Atmósfera opresiva:</strong> Diseño de sonido, iluminación y arte que generan malestar.</li>
+                    <li><strong>Narrativa psicológica:</strong> Historias con simbolismo, traumas y giros inesperados.</li>
+                    <li><strong>Enemigos simbólicos:</strong> Monstruos que representan miedos, culpas o conflictos internos.</li>
+                    <li><strong>Cámaras fijas:</strong> Ángulos cinematográficos que limitan la visión y aumentan la vulnerabilidad.</li>
+                </ul>
+                <div class="icon-list">
+                    <span>🧩 Puzzles</span>
+                    <span>🔫 Combate evitable</span>
+                    <span>📖 Lore profundo</span>
+                    <span>🎵 BSO inmersiva</span>
+                </div>
+            </div>
+            <div class="info-block">
+                <h3>📜 Sobre el proyecto</h3>
+                <p>
+                    Este archivo nace de la necesidad de <strong>preservar la memoria</strong> de los títulos
+                    que definieron el survival horror. Muchos de estos juegos ya no se comercializan o son
+                    difíciles de encontrar en plataformas modernas.
+                </p>
+                <p style="margin-top:0.8rem;">
+                    Nuestra misión es <strong>documentar y difundir</strong> la historia, el arte y el diseño
+                    de estas obras, ofreciendo enlaces a versiones que han sido legalmente abandonadas por sus
+                    propietarios. Creemos firmemente en la <strong>preservación cultural</strong> de los
+                    videojuegos como patrimonio interactivo.
+                </p>
+                <p style="margin-top:0.8rem; color: var(--accent); font-weight:bold;">
+                    “Recordar estos juegos es honrar el origen del terror digital.”
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== TABLA COMPARATIVA ===== -->
+        <h2 class="section-title">📊 Comparativa <span>de los Clásicos</span></h2>
+        <div style="overflow-x:auto; margin-bottom:3rem;">
+            <table class="comparison-table" id="comparisonTable">
+                <thead>
+                    <tr>
+                        <th>Juego</th>
+                        <th>Año</th>
+                        <th>Plataforma</th>
+                        <th>Protagonista</th>
+                        <th>Enemigo icónico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Se llena desde JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== CARRUSEL DE CITAS ===== -->
+        <h2 class="section-title">📖 Voces <span>del Género</span></h2>
+        <div class="quote-carousel">
+            <div class="quote-slide active">
+                “Silent Hill 2 no es solo un juego de terror, es una experiencia catártica sobre la culpa y la redención.”
+                <span class="author">— IGN, 2001</span>
+            </div>
+            <div class="quote-slide">
+                “Resident Evil definió el survival horror con su gestión de recursos y su atmósfera de mansión gótica.”
+                <span class="author">— GameSpot, 1996</span>
+            </div>
+            <div class="quote-slide">
+                “El verdadero horror en Silent Hill 3 viene de sus imágenes perturbadoras y su banda sonora industrial.”
+                <span class="author">— Eurogamer, 2003</span>
+            </div>
+            <div class="quote-slide">
+                “Nemesis es el perseguidor perfecto: implacable, impredecible y aterrador.”
+                <span class="author">— Polygon, 1999</span>
+            </div>
+            <div class="quote-slide">
+                “S.T.A.L.K.E.R. captura la desolación de Chernobyl con un realismo y una atmósfera inigualables.”
+                <span class="author">— PC Gamer, 2007</span>
+            </div>
+            <div class="quote-slide">
+                “American McGee's Alice transforma un cuento infantil en una pesadilla gótica y psicodélica.”
+                <span class="author">— Edge, 2000</span>
+            </div>
+            <div class="quote-controls">
+                <button id="prevQuote">❮</button>
+                <button id="nextQuote">❯</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal" id="gameModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h2 id="modalTitle">Título</h2>
+            <div id="modalBody">
+                <p>Contenido adicional...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p>
+                <strong>Proyecto de preservación con amor</strong> · Este sitio no aloja juegos completos, solo
+                proporciona enlaces para versiones abandonadas legalmente.
+            </p>
+            <p style="margin-top:0.5rem;">
+                Creado en 2025 · <strong>“Proyecto Silent Evil”</strong> · Tributo a los clásicos del survival horror
+            </p>
+            <div class="footer-links">
+                <a href="#top">⬆ Volver arriba</a>
+                <a href="#" onclick="alert('¡Gracias por apoyar la preservación!')">Acerca de</a>
+                <a href="#" onclick="alert('Contacto: silentevil@preservation.org')">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        //  DATOS DE LOS JUEGOS (ampliados con Stalker y Alice)
+        // ============================================================
+        const GAMES_DATA = [{
+            id: 'sh1',
+            title: 'Silent Hill',
+            year: 1999,
+            developer: 'Konami / Team Silent',
+            platform: 'PS1',
+            genre: 'Survival Horror / Psicológico',
+            protagonist: 'Harry Mason',
+            enemy: 'Monstruos de la niebla',
+            description: 'Harry Mason busca a su hija adoptiva Cheryl en el pueblo de Silent Hill, donde la niebla oculta horrores personificados. Revolucionó el terror psicológico con su narrativa simbólica y monstruos que representan traumas.',
+            extra: 'Primer juego en usar niebla para ocultar limitaciones técnicas. Su banda sonora de Akira Yamaoka es legendaria.',
+            image: 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2020/02/silent-hill-portada-ficha-1999-1879155.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/ahbtb7ed4pb5e4v/Silent_Hill_Portatil_PSX.rar/file',
+            favorite: false
+        }, {
+            id: 'sh2',
+            title: 'Silent Hill 2',
+            year: 2001,
+            developer: 'Konami / Team Silent',
+            platform: 'PS2',
+            genre: 'Survival Horror / Drama',
+            protagonist: 'James Sunderland',
+            enemy: 'Pyramid Head',
+            description: 'James Sunderland recibe una carta de su esposa fallecida Mary, llevándolo a Silent Hill. Obra maestra que explora culpa, duelo y redención, con Pyramid Head como manifestación de su auto-castigo.',
+            extra: 'Considerado por muchos el mejor juego de terror de la historia. Su narrativa ambiental es única.',
+            image: 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2vyg.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/7ted6bgn6f26c52/Silent_Hill_2_PC_port.rar/file',
+            favorite: false
+        }, {
+            id: 'sh3',
+            title: 'Silent Hill 3',
+            year: 2003,
+            developer: 'Konami / Team Silent',
+            platform: 'PS2',
+            genre: 'Survival Horror / Gore',
+            protagonist: 'Heather Mason',
+            enemy: 'Monstruos corporales',
+            description: 'Heather Mason descubre su conexión con el culto de Silent Hill. Juego más visceral de la saga, con diseños de monstruos basados en abortos y violencia corporal, y una banda sonora industrial icónica.',
+            extra: 'Tiene una de las mejores implementaciones de terror psicológico y corporal en videojuegos.',
+            image: 'https://m.media-amazon.com/images/M/MV5BYjFmNDkwMTYtZTJhMy00ZjQ1LTg5ODUtNjcwYWY5OTA2ZWEwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/0nszsej91lt2twy/Silent_hill_3_PC_port.rar/file',
+            favorite: false
+        }, {
+            id: 're1',
+            title: 'Resident Evil',
+            year: 1996,
+            developer: 'Capcom',
+            platform: 'PS1',
+            genre: 'Survival Horror / Zombis',
+            protagonist: 'Chris Redfield / Jill Valentine',
+            enemy: 'Zombies / Tyrant',
+            description: 'Los miembros de S.T.A.R.S. investigan una mansión en las afueras de Raccoon City, encontrando zombis y experimentos genéticos. Estableció el "tank controls" y la gestión de inventario que definieron el género.',
+            extra: 'El juego que popularizó el survival horror. Su remaster en 2002 es considerado una obra maestra.',
+            image: 'https://pics.filmaffinity.com/Resident_Evil-279276141-large.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/oj6x6tnn1ia9kla/RE1PCPort.rar/file',
+            favorite: false
+        }, {
+            id: 're2',
+            title: 'Resident Evil 2',
+            year: 1998,
+            developer: 'Capcom',
+            platform: 'PS1',
+            genre: 'Survival Horror / Acción',
+            protagonist: 'Leon S. Kennedy / Claire Redfield',
+            enemy: 'Mr. X (Tyrant)',
+            description: 'Leon Kennedy y Claire Redfield escapan de Raccoon City durante un brote zombie. Introdujo a Mr. X, el Tyrant perseguidor, y una narrativa de dos campañas entrelazadas con puzzles memorables.',
+            extra: 'Considerado uno de los mejores juegos de la saga. Su remake de 2019 fue aclamado por la crítica.',
+            image: 'https://upload.wikimedia.org/wikipedia/en/4/40/NTSC_Resident_Evil_2_Cover.png',
+            downloadUrl: 'https://www.mediafire.com/file/zz02p0ntrlnukc0/RE2PCPort%2528SN%2529.rar/file',
+            favorite: false
+        }, {
+            id: 're3',
+            title: 'Resident Evil 3: Nemesis',
+            year: 1999,
+            developer: 'Capcom',
+            platform: 'PS1',
+            genre: 'Survival Horror / Acción',
+            protagonist: 'Jill Valentine',
+            enemy: 'Nemesis',
+            description: 'Jill Valentine intenta escapar de Raccoon City mientras es perseguida por Nemesis, una bio-arma inteligente. Introdujo el sistema de esquiva y decisiones rápidas que aumentaban la tensión.',
+            extra: 'Nemesis es uno de los enemigos más icónicos de la historia de los videojuegos. Su remake fue lanzado en 2020.',
+            image: 'https://pics.filmaffinity.com/Resident_Evil_3_Nemesis-373179772-large.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/z2vgdfaaf43mmn9/RE3PCPort.rar/file',
+            favorite: false
+        }, {
+            id: 'stalker',
+            title: 'S.T.A.L.K.E.R.: Shadow of Chernobyl',
+            year: 2007,
+            developer: 'GSC Game World',
+            platform: 'PC',
+            genre: 'Survival Horror / Ciencia Ficción',
+            protagonist: 'El Marca (Stalker)',
+            enemy: 'Mutantes, Anomalías',
+            description: 'En la Zona de Exclusión de Chernobyl, un misterioso stalker conocido como "El Marca" busca respuestas sobre su pasado mientras sobrevive a mutantes, anomalías y facciones hostiles. Un juego de mundo abierto con una atmósfera opresiva y realista.',
+            extra: 'Basado en la novela "Picnic junto al camino" y la película "Stalker" de Tarkovsky. Su motor de IA y sistema de vida simulada eran revolucionarios para la época.',
+            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Stalker_Shadow_of_Chernobyl_cover.jpg/220px-Stalker_Shadow_of_Chernobyl_cover.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/ejemplo/stalker_shoc.rar/file',
+            favorite: false
+        }, {
+            id: 'alice',
+            title: 'American McGee\'s Alice',
+            year: 2000,
+            developer: 'Rogue Entertainment',
+            platform: 'PC',
+            genre: 'Survival Horror / Fantasía Oscura',
+            protagonist: 'Alice Liddell',
+            enemy: 'Ruleta, Criaturas del País de las Maravillas',
+            description: 'Una versión retorcida del cuento de Lewis Carroll. Alice, traumatizada por la muerte de su familia, lucha en un País de las Maravillas corrupto y violento, donde debe enfrentar sus demonios internos mientras salva su propia cordura.',
+            extra: 'Fue uno de los primeros juegos en usar una estética gótica y psicodélica. Su secuela "Madness Returns" salió en 2011. La banda sonora de Chris Vrenna es aclamada.',
+            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/American_McGee%27s_Alice_cover.jpg/220px-American_McGee%27s_Alice_cover.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/ejemplo/alice_2000.rar/file',
+            favorite: false
+        }];
+
+        // ============================================================
+        //  ESTADO
+        // ============================================================
+        let currentGames = [...GAMES_DATA];
+        let currentSort = 'default';
+        let searchTerm = '';
+        let favOnly = false;
+
+        // Cargar favoritos desde localStorage
+        function loadFavorites() {
+            const stored = localStorage.getItem('sh_favorites');
+            if (stored) {
+                const favIds = JSON.parse(stored);
+                currentGames.forEach(g => g.favorite = favIds.includes(g.id));
+            }
+        }
+        loadFavorites();
+
+        // Guardar favoritos
+        function saveFavorites() {
+            const favIds = currentGames.filter(g => g.favorite).map(g => g.id);
+            localStorage.setItem('sh_favorites', JSON.stringify(favIds));
+        }
+
+        // ============================================================
+        //  RENDERIZADO DE LA GRID
+        // ============================================================
+        const grid = document.getElementById('gamesGrid');
+
+        function renderGames() {
+            let filtered = [...currentGames];
+
+            // Búsqueda
+            if (searchTerm.trim() !== '') {
+                const term = searchTerm.toLowerCase().trim();
+                filtered = filtered.filter(g =>
+                    g.title.toLowerCase().includes(term) ||
+                    g.developer.toLowerCase().includes(term) ||
+                    g.genre.toLowerCase().includes(term) ||
+                    g.protagonist.toLowerCase().includes(term)
+                );
+            }
+
+            // Favoritos
+            if (favOnly) {
+                filtered = filtered.filter(g => g.favorite);
+            }
+
+            // Orden
+            switch (currentSort) {
+                case 'title':
+                    filtered.sort((a, b) => a.title.localeCompare(b.title));
+                    break;
+                case 'year':
+                    filtered.sort((a, b) => a.year - b.year);
+                    break;
+                case 'year-desc':
+                    filtered.sort((a, b) => b.year - a.year);
+                    break;
+                default:
+                    // orden original (por id)
+                    break;
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:var(--text-muted); padding:3rem 0;">No se encontraron juegos con esos criterios.</p>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(game => `
+                <article class="game-card" data-id="${game.id}">
+                    <img src="${game.image}" alt="${game.title} - portada" loading="lazy" />
+                    <div class="game-body">
+                        <h2 class="game-title">${game.title}</h2>
+                        <div class="game-meta">
+                            <span class="badge">${game.year}</span>
+                            <span class="badge badge-dev">${game.developer}</span>
+                            <span>${game.platform}</span>
+                        </div>
+                        <p class="game-desc">${game.description}</p>
+                        <div class="game-actions">
+                            <button class="btn-download" data-url="${game.downloadUrl}" data-id="${game.id}">⬇ Descargar</button>
+                            <button class="btn-fav ${game.favorite ? 'fav' : ''}" data-id="${game.id}">
+                                ${game.favorite ? '⭐' : '☆'}
+                            </button>
+                            <button class="btn-info" data-id="${game.id}">ℹ Más info</button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            // ===== EVENTOS DE LOS BOTONES (delegación) =====
+            // Descarga
+            grid.querySelectorAll('.btn-download').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const url = this.dataset.url;
+                    const id = this.dataset.id;
+                    if (confirm(`¿Descargar "${currentGames.find(g => g.id === id).title}"?`)) {
+                        window.open(url, '_blank');
+                        // feedback visual
+                        this.textContent = '✓ Descargando...';
+                        setTimeout(() => this.textContent = '⬇ Descargar', 2000);
+                    }
+                });
+            });
+
+            // Favoritos
+            grid.querySelectorAll('.btn-fav').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = this.dataset.id;
+                    const game = currentGames.find(g => g.id === id);
+                    if (game) {
+                        game.favorite = !game.favorite;
+                        saveFavorites();
+                        renderGames(); // re-render
+                    }
+                });
+            });
+
+            // Más info (modal)
+            grid.querySelectorAll('.btn-info').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = this.dataset.id;
+                    const game = currentGames.find(g => g.id === id);
+                    if (game) {
+                        openModal(game);
+                    }
+                });
+            });
+        }
+
+        // ============================================================
+        //  MODAL
+        // ============================================================
+        const modal = document.getElementById('gameModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        function openModal(game) {
+            modalTitle.textContent = game.title;
+            modalBody.innerHTML = `
+                <p><strong>${game.title}</strong> (${game.year}) · ${game.developer}</p>
+                <p>${game.description}</p>
+                <div class="extra-info">
+                    <span><strong>Género:</strong> ${game.genre}</span>
+                    <span><strong>Plataforma:</strong> ${game.platform}</span>
+                    <span><strong>Protagonista:</strong> ${game.protagonist}</span>
+                    <span><strong>Enemigo icónico:</strong> ${game.enemy}</span>
+                </div>
+                <p><strong>Curiosidad:</strong> ${game.extra}</p>
+                <p style="margin-top:1rem; font-size:0.9rem; color:var(--text-muted);">
+                    ⚠️ Este enlace es para preservación cultural. Apoya a los desarrolladores comprando versiones oficiales cuando estén disponibles.
+                </p>
+                <button class="btn-download" style="margin-top:1rem; padding:0.6rem 1.5rem; background:var(--accent); border:none; color:#fff; border-radius:4px; cursor:pointer;" 
+                        onclick="window.open('${game.downloadUrl}','_blank')">
+                    ⬇ Descargar ${game.title}
+                </button>
+            `;
+            modal.classList.add('open');
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ============================================================
+        //  TABLA COMPARATIVA
+        // ============================================================
+        function renderTable() {
+            const tbody = document.querySelector('#comparisonTable tbody');
+            tbody.innerHTML = GAMES_DATA.map(g => `
+                <tr>
+                    <td><strong>${g.title}</strong></td>
+                    <td>${g.year}</td>
+                    <td>${g.platform}</td>
+                    <td>${g.protagonist}</td>
+                    <td>${g.enemy}</td>
+                </tr>
+            `).join('');
+        }
+        renderTable();
+
+        // ============================================================
+        //  CARRUSEL DE CITAS
+        // ============================================================
+        let quoteIndex = 0;
+        const quotes = document.querySelectorAll('.quote-slide');
+        const totalQuotes = quotes.length;
+
+        function showQuote(index) {
+            quotes.forEach((q, i) => q.classList.toggle('active', i === index));
+        }
+
+        document.getElementById('nextQuote').addEventListener('click', () => {
+            quoteIndex = (quoteIndex + 1) % totalQuotes;
+            showQuote(quoteIndex);
+        });
+        document.getElementById('prevQuote').addEventListener('click', () => {
+            quoteIndex = (quoteIndex - 1 + totalQuotes) % totalQuotes;
+            showQuote(quoteIndex);
+        });
+
+        // Cambio automático cada 7s
+        let quoteInterval = setInterval(() => {
+            quoteIndex = (quoteIndex + 1) % totalQuotes;
+            showQuote(quoteIndex);
+        }, 7000);
+
+        // Pausa al pasar mouse
+        const quoteCarousel = document.querySelector('.quote-carousel');
+        quoteCarousel.addEventListener('mouseenter', () => clearInterval(quoteInterval));
+        quoteCarousel.addEventListener('mouseleave', () => {
+            quoteInterval = setInterval(() => {
+                quoteIndex = (quoteIndex + 1) % totalQuotes;
+                showQuote(quoteIndex);
+            }, 7000);
+        });
+
+        // ============================================================
+        //  CONTROLES (búsqueda, filtros, orden)
+        // ============================================================
+        const searchInput = document.getElementById('searchInput');
+        const sortSelect = document.getElementById('sortSelect');
+        const favFilter = document.getElementById('favFilter');
+
+        searchInput.addEventListener('input', function() {
+            searchTerm = this.value;
+            renderGames();
+        });
+
+        sortSelect.addEventListener('change', function() {
+            currentSort = this.value;
+            renderGames();
+        });
+
+        favFilter.addEventListener('change', function() {
+            favOnly = this.checked;
+            renderGames();
+        });
+
+        // ============================================================
+        //  RENDER INICIAL
+        // ============================================================
+        renderGames();
+
+        // ============================================================
+        //  MENSAJE DE BIENVENIDA (opcional)
+        // ============================================================
+        console.log('🏚️ Archivo Survival Horror · Preservando clásicos desde 2025');
+    </script>
 </body>
 </html>
