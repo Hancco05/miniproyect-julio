@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clásicos del Survival Horror · Archivo Histórico</title>
     <link rel="icon" href="https://www.evilresource.com/images/data/full/re4remake/first-aid-spray.png" type="image/x-icon" />
-    <!-- Fuente y estilos base -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
@@ -676,9 +675,9 @@
                 <strong>Bienvenido al Archivo Histórico del Survival Horror.</strong> Este sitio es un
                 <strong>tributo y respaldo documental</strong> a los juegos que sentaron las bases del terror en
                 los videojuegos. Aquí encontrarás información detallada sobre las sagas <strong>Silent Hill</strong>,
-                <strong>Resident Evil</strong>, <strong>S.T.A.L.K.E.R.</strong> y <strong>American McGee's Alice</strong>,
-                sus creadores, su impacto cultural y enlaces para acceder a versiones abandonadas legalmente,
-                con el único fin de preservar estas obras de arte interactivas.
+                <strong>Resident Evil</strong>, <strong>S.T.A.L.K.E.R.</strong>, <strong>American McGee's Alice</strong>,
+                <strong>F.E.A.R.</strong> y la mítica demo <strong>P.T.</strong>, además de otros títulos fundamentales.
+                Todo con el fin de preservar estas obras de arte interactivas.
             </p>
         </section>
 
@@ -785,6 +784,18 @@
                 “American McGee's Alice transforma un cuento infantil en una pesadilla gótica y psicodélica.”
                 <span class="author">— Edge, 2000</span>
             </div>
+            <div class="quote-slide">
+                “Resident Evil Outbreak llevó el terror cooperativo a un nuevo nivel, con una tensión constante.”
+                <span class="author">— GamePro, 2003</span>
+            </div>
+            <div class="quote-slide">
+                “P.T. es una obra maestra del terror en primera persona que cambió la industria para siempre.”
+                <span class="author">— Kotaku, 2014</span>
+            </div>
+            <div class="quote-slide">
+                “F.E.A.R. combinó acción trepidante con una historia de terror sobrenatural de forma brillante.”
+                <span class="author">— GameTrailers, 2005</span>
+            </div>
             <div class="quote-controls">
                 <button id="prevQuote">❮</button>
                 <button id="nextQuote">❯</button>
@@ -824,7 +835,7 @@
 
     <script>
         // ============================================================
-        //  DATOS DE LOS JUEGOS (ampliados con Stalker y Alice)
+        //  DATOS DE LOS JUEGOS (ampliados con Outbreak, P.T. y F.E.A.R.)
         // ============================================================
         const GAMES_DATA = [{
             id: 'sh1',
@@ -938,6 +949,48 @@
             image: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/American_McGee%27s_Alice_cover.jpg/220px-American_McGee%27s_Alice_cover.jpg',
             downloadUrl: 'https://www.mediafire.com/file/ejemplo/alice_2000.rar/file',
             favorite: false
+        }, {
+            id: 'outbreak',
+            title: 'Resident Evil Outbreak',
+            year: 2003,
+            developer: 'Capcom',
+            platform: 'PS2',
+            genre: 'Survival Horror / Cooperativo',
+            protagonist: '8 supervivientes (Kevin, Mark, etc.)',
+            enemy: 'Zombies, Monstruos',
+            description: 'En Raccoon City, un grupo de civiles intenta sobrevivir al brote viral. Por primera vez en la saga, el juego se centra en el modo cooperativo, con distintos escenarios y decisiones que afectan al desarrollo de la partida.',
+            extra: 'Fue pionero en el multijugador de supervivencia. Su sistema de "virus" y la necesidad de trabajar en equipo lo hacen único. Tuvo una secuela "Outbreak File #2" en 2004.',
+            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/Resident_Evil_Outbreak_Cover.jpg/220px-Resident_Evil_Outbreak_Cover.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/ejemplo/re_outbreak.rar/file',
+            favorite: false
+        }, {
+            id: 'pt',
+            title: 'P.T. (Silent Hills Teaser)',
+            year: 2014,
+            developer: 'Kojima Productions / 7780s Studio',
+            platform: 'PS4',
+            genre: 'Survival Horror / First Person',
+            protagonist: 'Sin nombre (jugador)',
+            enemy: 'Lisa (la entidad)',
+            description: 'Demo jugable de Silent Hills que nunca llegó a realizarse. El jugador despierta en un pasillo que se repite sin cesar, experimentando fenómenos paranormales y una atmósfera asfixiante. Se convirtió en un fenómeno viral y una de las experiencias de terror más aclamadas.',
+            extra: 'Fue retirada de la PSN en 2015. Su diseño de sonido y su narrativa ambiental cambiaron la forma de entender el terror en primera persona. La comunidad sigue buscando versiones preservadas.',
+            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/P.T._%28video_game%29_cover.jpg/220px-P.T._%28video_game%29_cover.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/ejemplo/pt_demo.rar/file',
+            favorite: false
+        }, {
+            id: 'fear',
+            title: 'F.E.A.R. (First Encounter Assault Recon)',
+            year: 2005,
+            developer: 'Monolith Productions',
+            platform: 'PC',
+            genre: 'Acción / Terror Sobrenatural',
+            protagonist: 'Sargento Punto (Point Man)',
+            enemy: 'Alma Wade, Replicantes',
+            description: 'Un comando de élite se enfrenta a soldados clon telequinéticos y a la presencia espectral de Alma Wade, una niña con poderes psíquicos. Combina tiroteos con balas lentas y una historia perturbadora sobre experimentos gubernamentales.',
+            extra: 'Reconocido por su inteligencia artificial avanzada y sus efectos de partículas. La figura de Alma Wade es uno de los antagonistas más icónicos de los videojuegos de terror.',
+            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/94/FEAR_Boxart.jpg/220px-FEAR_Boxart.jpg',
+            downloadUrl: 'https://www.mediafire.com/file/ejemplo/fear_pc.rar/file',
+            favorite: false
         }];
 
         // ============================================================
@@ -1031,8 +1084,7 @@
                 </article>
             `).join('');
 
-            // ===== EVENTOS DE LOS BOTONES (delegación) =====
-            // Descarga
+            // ===== EVENTOS DE LOS BOTONES =====
             grid.querySelectorAll('.btn-download').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1040,14 +1092,12 @@
                     const id = this.dataset.id;
                     if (confirm(`¿Descargar "${currentGames.find(g => g.id === id).title}"?`)) {
                         window.open(url, '_blank');
-                        // feedback visual
                         this.textContent = '✓ Descargando...';
                         setTimeout(() => this.textContent = '⬇ Descargar', 2000);
                     }
                 });
             });
 
-            // Favoritos
             grid.querySelectorAll('.btn-fav').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1056,12 +1106,11 @@
                     if (game) {
                         game.favorite = !game.favorite;
                         saveFavorites();
-                        renderGames(); // re-render
+                        renderGames();
                     }
                 });
             });
 
-            // Más info (modal)
             grid.querySelectorAll('.btn-info').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1154,13 +1203,11 @@
             showQuote(quoteIndex);
         });
 
-        // Cambio automático cada 7s
         let quoteInterval = setInterval(() => {
             quoteIndex = (quoteIndex + 1) % totalQuotes;
             showQuote(quoteIndex);
         }, 7000);
 
-        // Pausa al pasar mouse
         const quoteCarousel = document.querySelector('.quote-carousel');
         quoteCarousel.addEventListener('mouseenter', () => clearInterval(quoteInterval));
         quoteCarousel.addEventListener('mouseleave', () => {
@@ -1171,7 +1218,7 @@
         });
 
         // ============================================================
-        //  CONTROLES (búsqueda, filtros, orden)
+        //  CONTROLES
         // ============================================================
         const searchInput = document.getElementById('searchInput');
         const sortSelect = document.getElementById('sortSelect');
@@ -1197,9 +1244,6 @@
         // ============================================================
         renderGames();
 
-        // ============================================================
-        //  MENSAJE DE BIENVENIDA (opcional)
-        // ============================================================
         console.log('🏚️ Archivo Survival Horror · Preservando clásicos desde 2025');
     </script>
 </body>
