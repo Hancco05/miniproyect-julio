@@ -617,6 +617,7 @@
             justify-content: center;
             gap: 1rem;
             margin-top: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .confirmation-btn {
@@ -654,21 +655,15 @@
             background: #555;
         }
 
-        .ready-btn {
+        .done-btn {
             background: var(--success);
             color: #000;
-            animation: pulse 1.5s infinite;
+            display: none;
         }
 
-        .ready-btn:hover {
+        .done-btn:hover {
             background: #00dd55;
             transform: scale(1.05);
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 204, 68, 0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 204, 68, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 204, 68, 0); }
         }
 
         /* ===== MODAL DE INFORMACIÓN ===== */
@@ -959,8 +954,9 @@
             <div class="progress-bar" id="progressBar"></div>
         </div>
         <div class="progress-text" id="progressText">0%</div>
-        <div class="dialog-actions" id="dialogActions">
+        <div class="dialog-actions">
             <button class="confirmation-btn confirm-btn" id="confirmDownload">Sí, descargar</button>
+            <button class="confirmation-btn done-btn" id="doneBtn">✅ Listo</button>
             <button class="confirmation-btn cancel-btn" id="cancelDownload">Cancelar</button>
         </div>
     </div>
@@ -996,7 +992,7 @@
 
     <script>
         // ============================================================
-        //  DATOS DE LOS JUEGOS (con Dino Crisis 1)
+        //  DATOS DE LOS JUEGOS (CON IMÁGENES ACTUALIZADAS)
         // ============================================================
         const GAMES_DATA = [{
             id: 'sh1',
@@ -1009,7 +1005,7 @@
             enemy: 'Monstruos de la niebla',
             description: 'Harry Mason busca a su hija adoptiva Cheryl en el pueblo de Silent Hill, donde la niebla oculta horrores personificados. Revolucionó el terror psicológico con su narrativa simbólica y monstruos que representan traumas.',
             extra: 'Primer juego en usar niebla para ocultar limitaciones técnicas. Su banda sonora de Akira Yamaoka es legendaria.',
-            image: 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2020/02/silent-hill-portada-ficha-1999-1879155.jpg',
+            image: 'https://m.media-amazon.com/images/M/MV5BNGEwOWNiZDEtOTIyNC00OWM3LTk1MzktMzFmNjU4NWRlNTFiXkEyXkFqcGc@._V1_.jpg',
             downloadUrl: 'https://www.mediafire.com/file/ahbtb7ed4pb5e4v/Silent_Hill_Portatil_PSX.rar/file',
             favorite: false
         }, {
@@ -1093,7 +1089,7 @@
             enemy: 'Mutantes, Anomalías',
             description: 'En la Zona de Exclusión de Chernobyl, un misterioso stalker conocido como "El Marca" busca respuestas sobre su pasado mientras sobrevive a mutantes, anomalías y facciones hostiles. Un juego de mundo abierto con una atmósfera opresiva y realista.',
             extra: 'Basado en la novela "Picnic junto al camino" y la película "Stalker" de Tarkovsky. Su motor de IA y sistema de vida simulada eran revolucionarios para la época.',
-            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Stalker_Shadow_of_Chernobyl_cover.jpg/220px-Stalker_Shadow_of_Chernobyl_cover.jpg',
+            image: 'https://gfn.am/en/games/media/images/box_art_image-stalker-shad-013593fb.original.jpg',
             downloadUrl: 'https://www.mediafire.com/file/ejemplo/stalker_shoc.rar/file',
             favorite: false
         }, {
@@ -1107,7 +1103,7 @@
             enemy: 'Ruleta, Criaturas del País de las Maravillas',
             description: 'Una versión retorcida del cuento de Lewis Carroll. Alice, traumatizada por la muerte de su familia, lucha en un País de las Maravillas corrupto y violento, donde debe enfrentar sus demonios internos mientras salva su propia cordura.',
             extra: 'Fue uno de los primeros juegos en usar una estética gótica y psicodélica. Su secuela "Madness Returns" salió en 2011. La banda sonora de Chris Vrenna es aclamada.',
-            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/American_McGee%27s_Alice_cover.jpg/220px-American_McGee%27s_Alice_cover.jpg',
+            image: 'https://images.steamusercontent.com/ugc/315622114450516179/B761A0BCD2736640D30B249D6108461F39D6FFD5/?imw=512&imh=512&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true',
             downloadUrl: 'https://www.mediafire.com/file/ejemplo/alice_2000.rar/file',
             favorite: false
         }, {
@@ -1121,7 +1117,7 @@
             enemy: 'Zombies, Monstruos',
             description: 'En Raccoon City, un grupo de civiles intenta sobrevivir al brote viral. Por primera vez en la saga, el juego se centra en el modo cooperativo, con distintos escenarios y decisiones que afectan al desarrollo de la partida.',
             extra: 'Fue pionero en el multijugador de supervivencia. Su sistema de "virus" y la necesidad de trabajar en equipo lo hacen único. Tuvo una secuela "Outbreak File #2" en 2004.',
-            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/Resident_Evil_Outbreak_Cover.jpg/220px-Resident_Evil_Outbreak_Cover.jpg',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJBY401RVxQAZzB77n65YEDVSuduUZmZEPcLIfrSXxi4q-EVr3_UV8PAM&s=10',
             downloadUrl: 'https://www.mediafire.com/file/ejemplo/re_outbreak.rar/file',
             favorite: false
         }, {
@@ -1135,7 +1131,7 @@
             enemy: 'Lisa (la entidad)',
             description: 'Demo jugable de Silent Hills que nunca llegó a realizarse. El jugador despierta en un pasillo que se repite sin cesar, experimentando fenómenos paranormales y una atmósfera asfixiante. Se convirtió en un fenómeno viral y una de las experiencias de terror más aclamadas.',
             extra: 'Fue retirada de la PSN en 2015. Su diseño de sonido y su narrativa ambiental cambiaron la forma de entender el terror en primera persona. La comunidad sigue buscando versiones preservadas.',
-            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/P.T._%28video_game%29_cover.jpg/220px-P.T._%28video_game%29_cover.jpg',
+            image: 'https://upload.wikimedia.org/wikipedia/en/a/a8/P.T._cover_art.jpg',
             downloadUrl: 'https://www.mediafire.com/file/ejemplo/pt_demo.rar/file',
             favorite: false
         }, {
@@ -1149,7 +1145,7 @@
             enemy: 'Alma Wade, Replicantes',
             description: 'Un comando de élite se enfrenta a soldados clon telequinéticos y a la presencia espectral de Alma Wade, una niña con poderes psíquicos. Combina tiroteos con balas lentas y una historia perturbadora sobre experimentos gubernamentales.',
             extra: 'Reconocido por su inteligencia artificial avanzada y sus efectos de partículas. La figura de Alma Wade es uno de los antagonistas más icónicos de los videojuegos de terror.',
-            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/94/FEAR_Boxart.jpg/220px-FEAR_Boxart.jpg',
+            image: 'https://static.wikia.nocookie.net/fear/images/9/9e/Fear_firts.jpeg/revision/latest?cb=20121124083435&path-prefix=es',
             downloadUrl: 'https://www.mediafire.com/file/ejemplo/fear_pc.rar/file',
             favorite: false
         }, {
@@ -1163,7 +1159,7 @@
             enemy: 'T-Rex, Velociraptores',
             description: 'En una isla remota, un equipo de operaciones especiales liderado por Regina debe infiltrarse en una instalación secreta donde los dinosaurios han sido revividos mediante ingeniería genética. Combina la gestión de recursos de Resident Evil con la tensión de ser cazado por depredadores prehistóricos.',
             extra: 'Shinji Mikami (creador de Resident Evil) dirigió este juego. Fue el primer survival horror con dinosaurios, y su sistema de "peligro" y acertijos con ADN lo hicieron único. Tuvo una secuela en 2000.',
-            image: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Dino_Crisis_Cover.jpg/220px-Dino_Crisis_Cover.jpg',
+            image: 'https://www.notebookcheck.org/fileadmin/Notebooks/News/_nc5/DinoCrisisArtWork.jpg',
             downloadUrl: 'https://www.mediafire.com/file/ejemplo/dinocrisis.rar/file',
             favorite: false
         }];
@@ -1200,7 +1196,6 @@
         function renderGames() {
             let filtered = [...currentGames];
 
-            // Búsqueda
             if (searchTerm.trim() !== '') {
                 const term = searchTerm.toLowerCase().trim();
                 filtered = filtered.filter(g =>
@@ -1211,12 +1206,10 @@
                 );
             }
 
-            // Favoritos
             if (favOnly) {
                 filtered = filtered.filter(g => g.favorite);
             }
 
-            // Orden
             switch (currentSort) {
                 case 'title':
                     filtered.sort((a, b) => a.title.localeCompare(b.title));
@@ -1228,7 +1221,6 @@
                     filtered.sort((a, b) => b.year - a.year);
                     break;
                 default:
-                    // orden original (por id)
                     break;
             }
 
@@ -1259,7 +1251,6 @@
                 </article>
             `).join('');
 
-            // ===== EVENTOS DE LOS BOTONES =====
             grid.querySelectorAll('.btn-download').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1297,39 +1288,34 @@
         }
 
         // ============================================================
-        //  DIÁLOGO DE CONFIRMACIÓN CON BARRA DE PROGRESO
+        //  DIÁLOGO DE CONFIRMACIÓN CON BARRA DE PROGRESO Y BOTÓN "LISTO"
         // ============================================================
         const overlay = document.getElementById('overlay');
         const confirmationDialog = document.getElementById('confirmationDialog');
         const dialogGameName = document.getElementById('dialogGameName');
         const progressBar = document.getElementById('progressBar');
         const progressText = document.getElementById('progressText');
-        const dialogActions = document.getElementById('dialogActions');
         const confirmBtn = document.getElementById('confirmDownload');
         const cancelBtn = document.getElementById('cancelDownload');
+        const doneBtn = document.getElementById('doneBtn');
 
         let currentDownloadUrl = '';
         let progressInterval = null;
         let isDownloading = false;
-        let isReady = false;
+        let isComplete = false;
 
         function openDownloadDialog(game) {
-            // Resetear todo
             currentDownloadUrl = game.downloadUrl;
             dialogGameName.textContent = game.title;
             progressBar.style.width = '0%';
             progressText.textContent = '0%';
-            isDownloading = false;
-            isReady = false;
+            confirmBtn.style.display = 'inline-block';
             confirmBtn.disabled = false;
             confirmBtn.textContent = 'Sí, descargar';
-            confirmBtn.className = 'confirmation-btn confirm-btn';
-            // Mostrar el botón cancelar, ocultar el botón listo
+            doneBtn.style.display = 'none';
             cancelBtn.style.display = 'inline-block';
-            // Si hay un botón listo sobrante, lo quitamos
-            const oldReady = document.querySelector('.ready-btn');
-            if (oldReady) oldReady.remove();
-
+            isDownloading = false;
+            isComplete = false;
             overlay.style.display = 'block';
             confirmationDialog.style.display = 'block';
         }
@@ -1341,25 +1327,21 @@
                 clearInterval(progressInterval);
                 progressInterval = null;
             }
-            isDownloading = false;
-            isReady = false;
+            confirmBtn.style.display = 'inline-block';
             confirmBtn.disabled = false;
             confirmBtn.textContent = 'Sí, descargar';
-            confirmBtn.className = 'confirmation-btn confirm-btn';
-            // Eliminar botón listo si existe
-            const oldReady = document.querySelector('.ready-btn');
-            if (oldReady) oldReady.remove();
+            doneBtn.style.display = 'none';
             cancelBtn.style.display = 'inline-block';
+            isDownloading = false;
+            isComplete = false;
         }
 
-        // Iniciar la simulación de carga
         function startDownloadSimulation() {
-            if (isDownloading) return;
+            if (isDownloading || isComplete) return;
             isDownloading = true;
-            isReady = false;
             confirmBtn.disabled = true;
             confirmBtn.textContent = 'Descargando...';
-            // Ocultar cancelar durante la carga? Mejor mantenerlo visible
+            cancelBtn.style.display = 'inline-block';
 
             let progress = 0;
             progressInterval = setInterval(() => {
@@ -1372,37 +1354,27 @@
                     clearInterval(progressInterval);
                     progressInterval = null;
                     isDownloading = false;
-                    isReady = true;
-                    // Cambiar el botón confirmar por un botón "Listo"
-                    confirmBtn.disabled = false;
-                    confirmBtn.textContent = '✅ Listo';
-                    confirmBtn.className = 'confirmation-btn ready-btn';
-                    // Ocultar cancelar
+                    isComplete = true;
+                    confirmBtn.style.display = 'none';
                     cancelBtn.style.display = 'none';
-                    // El evento click del botón listo se maneja con un listener nuevo
+                    doneBtn.style.display = 'inline-block';
+                    progressText.textContent = '✅ ¡Completado!';
                 }
             }, 200);
         }
 
-        // Evento para el botón "Listo" (se activa cuando el botón tiene clase 'ready-btn')
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('ready-btn')) {
-                // Abrir el enlace
+        // Evento del botón "Listo"
+        doneBtn.addEventListener('click', function() {
+            if (isComplete && currentDownloadUrl) {
                 window.open(currentDownloadUrl, '_blank');
-                // Cerrar el diálogo
                 closeDownloadDialog();
-                // Resetear barra
-                progressBar.style.width = '0%';
-                progressText.textContent = '0%';
             }
         });
 
-        // Eventos del diálogo
         confirmBtn.addEventListener('click', function() {
-            if (!isDownloading && !isReady) {
+            if (!isDownloading && !isComplete) {
                 startDownloadSimulation();
             }
-            // Si está ready, el evento de 'ready-btn' se encarga
         });
 
         cancelBtn.addEventListener('click', function() {
