@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-        /* ===== VARIABLES Y RESET ===== */
         * {
             margin: 0;
             padding: 0;
@@ -47,7 +46,6 @@
             background-image: radial-gradient(circle at 20% 30%, #1a0a0a 0%, #000 100%);
         }
 
-        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -59,7 +57,6 @@
             border-radius: 4px;
         }
 
-        /* ===== UTILIDADES ===== */
         .container {
             max-width: 1300px;
             margin: 0 auto;
@@ -82,7 +79,6 @@
             text-shadow: none;
         }
 
-        /* ===== HEADER ===== */
         header {
             padding: 2rem 0 1rem;
             text-align: center;
@@ -131,7 +127,6 @@
             letter-spacing: 3px;
         }
 
-        /* ===== INTRO ===== */
         .intro {
             background: var(--bg-glass);
             border-left: 4px solid var(--accent);
@@ -151,7 +146,6 @@
             color: var(--accent);
         }
 
-        /* ===== BLOQUES DE GIF + INFO (alternando) ===== */
         .gif-info-block {
             display: flex;
             align-items: center;
@@ -233,7 +227,6 @@
             font-weight: bold;
         }
 
-        /* ===== CONTROLES DE FILTRO ===== */
         .controls {
             display: flex;
             flex-wrap: wrap;
@@ -279,7 +272,6 @@
             font-size: 0.9rem;
         }
 
-        /* ===== GRID DE JUEGOS ===== */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -489,7 +481,6 @@
             font-size: 0.9rem;
         }
 
-        /* ===== TABLA COMPARATIVA ===== */
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
@@ -516,7 +507,6 @@
             background: rgba(230, 0, 0, 0.05);
         }
 
-        /* ===== CARRUSEL DE CITAS ===== */
         .quote-carousel {
             background: var(--bg-glass);
             border-radius: var(--radius);
@@ -585,7 +575,6 @@
             border-color: var(--accent);
         }
 
-        /* ===== FOOTER ===== */
         footer {
             margin-top: 3rem;
             padding: 2rem 0;
@@ -617,7 +606,6 @@
             color: var(--accent);
         }
 
-        /* ===== MODAL DE CONFIRMACIÓN CON BARRA DE PROGRESO ===== */
         .overlay {
             display: none;
             position: fixed;
@@ -747,7 +735,6 @@
             transform: scale(1.05);
         }
 
-        /* ===== MODAL DE INFORMACIÓN ===== */
         .modal {
             display: none;
             position: fixed;
@@ -894,17 +881,17 @@
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
+    
     <header>
         <div class="container">
-            <h1>Archivo Survival Horror</h1>
+            <h1>Archivos de juegos clasicos</h1>
             <p>Preservando los clásicos que definieron el género</p>
         </div>
     </header>
 
     <main class="container">
 
-        <!-- ===== INTRO ===== -->
+        
         <section class="intro">
             <p>
                 <strong>Bienvenido al Archivo Histórico del Survival Horror.</strong> Este sitio es un
@@ -916,10 +903,8 @@
             </p>
         </section>
 
-        <!-- ===== BLOQUES DE GIF + INFO (alternando) ===== -->
         <h2 class="section-title">🎞️ Momentos <span>Icónicos</span></h2>
 
-        <!-- Bloque 1: GIF izquierda, info derecha -->
         <div class="gif-info-block">
             <div class="gif-side">
                 <img src="https://images.squarespace-cdn.com/content/v1/61d0d6b5e7f7444a96edf02f/aa824e24-4449-40ae-964b-2dc5f80979b7/jill-jump+copy.gif" alt="Jill Valentine saltando - Resident Evil 3" loading="lazy" />
@@ -940,7 +925,6 @@
             </div>
         </div>
 
-        <!-- Bloque 2: GIF derecha, info izquierda (reverse) -->
         <div class="gif-info-block reverse">
             <div class="gif-side">
                 <img src="https://media.tenor.com/xUZy4RUZO6MAAAAM/heather-mason-cheryl-mason.gif" alt="Heather Mason - Silent Hill 3" loading="lazy" />
@@ -961,7 +945,6 @@
             </div>
         </div>
 
-        <!-- Bloque 3: GIF izquierda, info derecha -->
         <div class="gif-info-block">
             <div class="gif-side">
                 <img src="https://lparchive.org/Resident-Evil-2-and-3/Update%2039/smashjill.gif" alt="Jill rompiendo una ventana - Resident Evil 2/3" loading="lazy" />
@@ -982,7 +965,6 @@
             </div>
         </div>
 
-        <!-- ===== CONTROLES DE FILTRO ===== -->
         <div class="controls">
             <input type="text" id="searchInput" placeholder="🔍 Buscar juego, desarrolladora..." />
             <select id="sortSelect">
@@ -997,12 +979,9 @@
             </label>
         </div>
 
-        <!-- ===== GRID DE JUEGOS ===== -->
         <div class="games-grid" id="gamesGrid">
-            <!-- Los juegos se inyectan con JavaScript -->
         </div>
 
-        <!-- ===== SECCIÓN INFORMATIVA ===== -->
         <div class="info-section">
             <div class="info-block">
                 <h3>🧟 Características del Survival Horror</h3>
@@ -1039,7 +1018,6 @@
             </div>
         </div>
 
-        <!-- ===== TABLA COMPARATIVA ===== -->
         <h2 class="section-title">📊 Comparativa <span>de los Clásicos</span></h2>
         <div style="overflow-x:auto; margin-bottom:3rem;">
             <table class="comparison-table" id="comparisonTable">
@@ -1053,12 +1031,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Se llena desde JS -->
                 </tbody>
             </table>
         </div>
 
-        <!-- ===== CARRUSEL DE CITAS ===== -->
         <h2 class="section-title">📖 Voces <span>del Género</span></h2>
         <div class="quote-carousel">
             <div class="quote-slide active">
@@ -1109,7 +1085,6 @@
 
     </main>
 
-    <!-- ===== DIALOGO DE CONFIRMACIÓN CON BARRA DE PROGRESO ===== -->
     <div class="overlay" id="overlay"></div>
     <div class="confirmation-dialog" id="confirmationDialog">
         <div class="dialog-title">⬇ DESCARGA</div>
@@ -1128,7 +1103,6 @@
         </div>
     </div>
 
-    <!-- ===== MODAL DE INFORMACIÓN ===== -->
     <div class="modal" id="gameModal">
         <div class="modal-content">
             <button class="close-modal" id="closeModal">&times;</button>
@@ -1139,7 +1113,6 @@
         </div>
     </div>
 
-    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="container">
             <p>
@@ -1158,9 +1131,6 @@
     </footer>
 
     <script>
-        // ============================================================
-        //  DATOS DE LOS JUEGOS
-        // ============================================================
         const GAMES_DATA = [{
             id: 'sh1',
             title: 'Silent Hill',
@@ -1331,9 +1301,6 @@
             favorite: false
         }];
 
-        // ============================================================
-        //  ESTADO
-        // ============================================================
         let currentGames = [...GAMES_DATA];
         let currentSort = 'default';
         let searchTerm = '';
@@ -1353,9 +1320,6 @@
             localStorage.setItem('sh_favorites', JSON.stringify(favIds));
         }
 
-        // ============================================================
-        //  RENDER GRID
-        // ============================================================
         const grid = document.getElementById('gamesGrid');
 
         function renderGames() {
@@ -1452,9 +1416,6 @@
             });
         }
 
-        // ============================================================
-        //  DIÁLOGO DE DESCARGA CON BARRA DE PROGRESO
-        // ============================================================
         const overlay = document.getElementById('overlay');
         const confirmationDialog = document.getElementById('confirmationDialog');
         const dialogGameName = document.getElementById('dialogGameName');
@@ -1557,9 +1518,6 @@
             closeDownloadDialog();
         });
 
-        // ============================================================
-        //  MODAL DE INFORMACIÓN
-        // ============================================================
         const modal = document.getElementById('gameModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalBody = document.getElementById('modalBody');
@@ -1600,9 +1558,6 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // ============================================================
-        //  TABLA COMPARATIVA
-        // ============================================================
         function renderTable() {
             const tbody = document.querySelector('#comparisonTable tbody');
             tbody.innerHTML = GAMES_DATA.map(g => `
@@ -1617,9 +1572,6 @@
         }
         renderTable();
 
-        // ============================================================
-        //  CARRUSEL DE CITAS
-        // ============================================================
         let quoteIndex = 0;
         const quotes = document.querySelectorAll('.quote-slide');
         const totalQuotes = quotes.length;
@@ -1651,9 +1603,6 @@
             }, 7000);
         });
 
-        // ============================================================
-        //  CONTROLES
-        // ============================================================
         const searchInput = document.getElementById('searchInput');
         const sortSelect = document.getElementById('sortSelect');
         const favFilter = document.getElementById('favFilter');
@@ -1673,9 +1622,6 @@
             renderGames();
         });
 
-        // ============================================================
-        //  RENDER INICIAL
-        // ============================================================
         renderGames();
 
         console.log('🏚️ Archivo Survival Horror · Preservando clásicos desde 2025');
