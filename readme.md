@@ -66,6 +66,7 @@ Este proyecto nace con la misión de **preservar la memoria** de los títulos qu
 - Inspirado en la comunidad de preservación de videojuegos
 - Imágenes y GIFs obtenidos de fuentes públicas (Wikipedia, Steam, etc.)
 
+![alt text](image.png)
 
 >Licencia
 
